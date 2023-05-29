@@ -1,13 +1,646 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html { font-size: 14px; }
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body { margin-bottom: 60px; }
+
+/* NULLABLE */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+ul[class],
+ol[class] { padding: 0; }
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd { margin: 0; }
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+ul[class],
+ol[class] { list-style: none; }
+
+a:not([class]) { text-decoration-skip-ink: auto; }
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+article > * + * { margin-top: 1em; }
+
+input,
+button,
+textarea,
+select { font: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* NULLABLE END*/
+
+:root {
+  --main-color: #1E2922;
+  --bg-color: #A1F7C5;
+  --third-color: #295E3F;
+  --fourth-color: #49AB72;
+}
+
+body { background-color: var(--bg-color); }
+
+* {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+h1, h2, h2, h4, h5, h6 { color: var(--main-color) }
+
+h2 { font-size: 22px; }
+
+button { width: 200px; }
+
+input { font-size: 14px; }
+
+label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.btn-80 {
+  font-size: 14px;
+  height: 25px;
+  padding: 3px;
+  width: 80px;
+}
+
+.check-container {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+}
+
+.d-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+
+.marb { margin-bottom: 5px; }
+
+.d-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.label-container {
+  align-items: start;
+  display: flex;
+  font-size: 14px;
+  justify-content: start;
+}
+
+.fs-14 { font-size: 14px; }
+
+.zoom2 { zoom: 2; }
+
+.my-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.my-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.my-second-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.content-container {
+  align-items: flex-start;
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.d-end {
+  display: flex;
+  gap: 30px;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.storage-select { width: 300px; }
+
+.content-container__job-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  justify-content: center;
+  width: 70%;
+}
+
+.content-container__job-container__title {
+  align-items: center;
+  display: flex;
+  gap: 30%;
+  justify-content: center;
+}
+
+.content-container__categories-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  justify-content: center;
+  width: 30%;
+}
+
+.content-container__categories-container__title {
+  align-items: center;
+  display: flex;
+  gap: 10%;
+  justify-content: center;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.list-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.list-item {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.categories-list__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.category-name {
+  text-align: start;
+  width: 50%;
+}
+
+.category-count { width: 25%; }
+
+.category-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 25%;
+}
+
+.jobs-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.jobs-list__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.job-name {
+  text-align: start;
+  width: 28%;
+}
+
+.job-category { width: 20%; }
+
+.job-date { width: 18%; }
+
+.job-status { width: 16%; }
+
+.job-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 16%;
+}
+
+main {
+  height: 95%;
+  width: 95%;
+}
+
+/*500*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.main-error-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px auto;
+  max-width: 560px;
+  min-height: 600px;
+  width: auto;
+}
+
+.error-title {
+  color: #4b4b62;
+  font-family: Roboto;
+  font-size: 38px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: normal;
+  line-height: normal;
+  margin-bottom: 16px;
+  max-width: 529px;
+  text-align: center;
+}
+
+.error-subtitle {
+  color: #4b4b62;
+  font-family: Roboto;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.31;
+  margin-bottom: 24px;
+  max-width: 568px;
+  text-align: center;
+}
+
+svg { margin-bottom: 16px; }
+
+
+.full-torradeira { }
+
+.torradeira { }
+
+.pao-atras {
+  animation: leftright 1s alternate infinite;
+  transform-origin: center;
+}
+
+.pao-frente {
+  animation: leftright 1s 0.3s alternate infinite;
+  transform-origin: center;
+}
+
+.olho-esq {
+  animation: sad 2s alternate infinite;
+  transform-origin: center;
+}
+
+.olho-dir {
+  animation: sad 2s alternate infinite;
+  transform-origin: center;
+}
+
+.boca {
+  animation: sad 2s alternate infinite;
+  transform-origin: center;
+}
+
+.raios {
+  -webkit-animation: flicker-4 4s linear infinite both;
+  animation: flicker-4 4s linear infinite both;
+}
+
+.tomada {
+  -webkit-animation: vibrate-1 3s linear infinite both;
+  animation: vibrate-1 3s linear infinite both;
+}
+
+.fio-500 {
+  -webkit-animation: vibrate-1 3s linear infinite both;
+  animation: vibrate-1 3s linear infinite both;
+}
+
+.fio {
+  -webkit-animation: vibrate-1 3s linear infinite both;
+  animation: vibrate-1 3s linear infinite both;
+}
+
+@keyframes scales {
+  from { transform: scale(0.98); }
+
+  to { transform: scale(1); }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-4-1 14:58:16
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation flicker-4
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes flicker-4 {
+  0%, 100% { opacity: 1; }
+
+  31.98% { opacity: 1; }
+
+  32% { opacity: 0; }
+
+  32.8% { opacity: 0; }
+
+  32.82% { opacity: 1; }
+
+  34.98% { opacity: 1; }
+
+  35% { opacity: 0; }
+
+  35.7% { opacity: 0; }
+
+  35.72% { opacity: 1; }
+
+  36.98% { opacity: 1; }
+
+  37% { opacity: 0; }
+
+  37.6% { opacity: 0; }
+
+  37.62% { opacity: 1; }
+
+  67.98% { opacity: 1; }
+
+  68% { opacity: 0; }
+
+  68.4% { opacity: 0; }
+
+  68.42% { opacity: 1; }
+
+  95.98% { opacity: 1; }
+
+  96% { opacity: 0; }
+
+  96.7% { opacity: 0; }
+
+  96.72% { opacity: 1; }
+
+  98.98% { opacity: 1; }
+
+  99% { opacity: 0; }
+
+  99.6% { opacity: 0; }
+
+  99.62% { opacity: 1; }
+}
+
+@keyframes flicker-4 {
+  0%, 100% { opacity: 1; }
+
+  31.98% { opacity: 1; }
+
+  32% { opacity: 0; }
+
+  32.8% { opacity: 0; }
+
+  32.82% { opacity: 1; }
+
+  34.98% { opacity: 1; }
+
+  35% { opacity: 0; }
+
+  35.7% { opacity: 0; }
+
+  35.72% { opacity: 1; }
+
+  36.98% { opacity: 1; }
+
+  37% { opacity: 0; }
+
+  37.6% { opacity: 0; }
+
+  37.62% { opacity: 1; }
+
+  67.98% { opacity: 1; }
+
+  68% { opacity: 0; }
+
+  68.4% { opacity: 0; }
+
+  68.42% { opacity: 1; }
+
+  95.98% { opacity: 1; }
+
+  96% { opacity: 0; }
+
+  96.7% { opacity: 0; }
+
+  96.72% { opacity: 1; }
+
+  98.98% { opacity: 1; }
+
+  99% { opacity: 0; }
+
+  99.6% { opacity: 0; }
+
+  99.62% { opacity: 1; }
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-4-1 15:17:57
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation vibrate-1
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+@keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-4-1 15:42:45
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation wobble-ver-right
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes wobble-ver-right {
+  0%, 100% {
+    -webkit-transform: translateY(0) rotate(0);
+    -webkit-transform-origin: 50% 50%;
+    transform: translateY(0) rotate(0);
+    transform-origin: 50% 50%;
+  }
+
+  15% {
+    -webkit-transform: translateY(-30px) rotate(6deg);
+    transform: translateY(-30px) rotate(6deg);
+  }
+
+  30% {
+    -webkit-transform: translateY(15px) rotate(-6deg);
+    transform: translateY(15px) rotate(-6deg);
+  }
+
+  45% {
+    -webkit-transform: translateY(-15px) rotate(3.6deg);
+    transform: translateY(-15px) rotate(3.6deg);
+  }
+
+  60% {
+    -webkit-transform: translateY(9px) rotate(-2.4deg);
+    transform: translateY(9px) rotate(-2.4deg);
+  }
+
+  75% {
+    -webkit-transform: translateY(-6px) rotate(1.2deg);
+    transform: translateY(-6px) rotate(1.2deg);
+  }
+}
+
+
+@keyframes sad {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+
+  100% { transform: rotateX(10deg) rotateY(5deg); }
+}
+
+@keyframes leftright {
+  0% { transform: rotateZ(0deg) }
+
+  100% { transform: rotateZ(-15deg) }
+}
+
+/*500 end*/
+
+.block-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
 }
