@@ -9,7 +9,7 @@ html {
   position: relative;
 }
 
-body { margin-bottom: 60px; }
+body, #root { margin-bottom: 60px; }
 
 /* NULLABLE */
 
@@ -35,7 +35,7 @@ blockquote,
 dl,
 dd { margin: 0; }
 
-body {
+body, #root {
   line-height: 1.5;
   min-height: 100vh;
   scroll-behavior: smooth;

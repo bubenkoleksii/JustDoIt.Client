@@ -1,10 +1,4 @@
-export interface CategoryResponse {
-    id: string;
-    name: string;
-    countOfJobs: number;
-}
-
-export interface JobResponse {
+export interface IJobResponse {
     id: string;
     categoryId: string;
     name: string;
