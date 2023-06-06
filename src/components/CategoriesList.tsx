@@ -18,7 +18,7 @@ const CategoriesList : React.FC<CategoriesListProps> = ({categories}) => {
 
                 <hr/>
 
-                {categories.map(categoryItem => <CategoryItem id={categoryItem.id} name={categoryItem.name} countOfJobs={categoryItem.countOfJobs}/>)}
+                {categories.map(categoryItem => <CategoryItem key={categoryItem.id} id={categoryItem.id} name={categoryItem.name} countOfJobs={categoryItem.countOfJobs}/>)}
             </div>
 
             <hr/>

@@ -1,6 +1,8 @@
 import {IJobResponse} from "../../models/IJobResponse";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IJobRequest} from "../../models/IJobRequest";
+import {v4} from "uuid";
+import {useAppSelector} from "../../hooks/redux";
 
 interface JobState {
     jobs: IJobResponse[];
@@ -17,11 +19,20 @@ export const jobSlice = createSlice({
         getJobs: (state, action: PayloadAction<IJobResponse[]>) => {
             state.jobs = action.payload;
         },
-        getJobsByCategory: (state, action: PayloadAction<IJobResponse[]>) => {
-
-        },
         addJob: (state, action: PayloadAction<IJobRequest>) => {
+            const id = v4();
 
+            const job: IJobResponse = {
+                id,
+                name: action.payload.name,
+                isCompleted: action.payload.isCompleted,
+                dueDate: action.payload.dueDate,
+                categoryId: action.payload.categoryId,
+                dateDifferenceInMinutes: 500,
+                categoryName: "Сім'я"
+            }
+
+            state.jobs.push(job);
         },
         removeJob: (state, action: PayloadAction<string>) => {
             state.jobs = state.jobs.filter(job => job.id !== action.payload);

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import JobsList from "./components/JobsList";
 import CategoriesList from "./components/CategoriesList";
 import {Button} from "react-bootstrap";
@@ -6,6 +6,8 @@ import {useAppDispatch, useAppSelector} from "./hooks/redux";
 import {getJobs, jobSlice} from "./store/reducers/jobSlice";
 import {categoriesSeed, jobsSeed} from "./store/dataSeed";
 import {getCategories} from "./store/reducers/categorySlice";
+import AddCategory from "./components/modals/AddCategory";
+import AddJob from "./components/modals/AddJob";
 
 const App : React.FC = () => {
     const dispatch = useAppDispatch();
@@ -16,6 +18,9 @@ const App : React.FC = () => {
         dispatch(getJobs(jobsSeed));
         dispatch(getCategories(categoriesSeed))
     }, []);
+
+    const [addCategoryVisible, setAddCategoryVisible] = useState<boolean>(false);
+    const [addJobVisible, setAddJobVisible] = useState<boolean>(false);
 
     return (
         <div className="text-center App container my-container">
@@ -40,9 +45,11 @@ const App : React.FC = () => {
                                 <h2 className="my-second-title">Jobs</h2>
 
                                 {categories && !(categories.length === 0)
-                                    ? <Button variant="success">Add Job</Button>
+                                    ? <Button onClick={() => setAddJobVisible(true)} variant="success">Add Job</Button>
                                     : <p className="list-item">Add a category to add a job</p>
                                 }
+
+                                <AddJob show={addJobVisible} onHide={() => setAddJobVisible(false)}/>
                             </div>
 
                             <JobsList jobs={jobs}/>
@@ -52,9 +59,11 @@ const App : React.FC = () => {
                             <div className="content-container__categories-container__title">
                                 <h2 className="my-second-title">Categories</h2>
 
-                                <button type="button" className="btn btn-success">
+                                <button onClick={() => setAddCategoryVisible(true)} type="button" className="btn btn-success">
                                     Add Category
                                 </button>
+
+                                <AddCategory show={addCategoryVisible} onHide={() => setAddCategoryVisible(false)}/>
                             </div>
 
                             <CategoriesList categories={categories}/>
