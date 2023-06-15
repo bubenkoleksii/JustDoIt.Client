@@ -1,8 +1,7 @@
-import {IJobResponse} from "../../models/IJobResponse";
+import {IJobResponse} from "../../../models/IJobResponse";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IJobRequest} from "../../models/IJobRequest";
+import {IJobRequest} from "../../../models/IJobRequest";
 import {v4} from "uuid";
-import {useAppSelector} from "../../hooks/redux";
 
 interface JobState {
     jobs: IJobResponse[];

@@ -3,20 +3,21 @@ import JobsList from "./components/JobsList";
 import CategoriesList from "./components/CategoriesList";
 import {Button} from "react-bootstrap";
 import {useAppDispatch, useAppSelector} from "./hooks/redux";
-import {getJobs, jobSlice} from "./store/reducers/jobSlice";
+import {getJobs, jobSlice} from "./store/reducers/job/jobSlice";
 import {categoriesSeed, jobsSeed} from "./store/dataSeed";
-import {getCategories} from "./store/reducers/categorySlice";
 import AddCategory from "./components/modals/AddCategory";
 import AddJob from "./components/modals/AddJob";
+import {categoryActions} from "./store/reducers/category/categorySlice";
 
-const App : React.FC = () => {
+const App = () => {
     const dispatch = useAppDispatch();
-    const {jobs} = useAppSelector(state => state.jobReducer);
-    const {categories} = useAppSelector(state => state.categoryReducer);
+    const {jobs, categories} = useAppSelector(state => ({
+        jobs: state.jobReducer.jobs,
+        categories: state.categoryReducer.categories
+    }));
 
     useEffect(() => {
-        dispatch(getJobs(jobsSeed));
-        dispatch(getCategories(categoriesSeed))
+        dispatch({type: 'getCategories'})
     }, []);
 
     const [addCategoryVisible, setAddCategoryVisible] = useState<boolean>(false);
@@ -63,7 +64,7 @@ const App : React.FC = () => {
                                     Add Category
                                 </button>
 
-                                <AddCategory show={addCategoryVisible} onHide={() => setAddCategoryVisible(false)}/>
+                                {/*<AddCategory show={addCategoryVisible} onHide={() => setAddCategoryVisible(false)}/>*/}
                             </div>
 
                             <CategoriesList categories={categories}/>

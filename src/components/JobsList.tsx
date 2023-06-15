@@ -6,7 +6,7 @@ interface JobsListProps {
     jobs: IJobResponse[];
 }
 
-const JobsList : React.FC<JobsListProps> = ({jobs}) => {
+const JobsList = ({jobs}: JobsListProps) => {
     return (
         <div className="jobs-list">
             <div className="jobs-list__item">
@@ -20,7 +20,14 @@ const JobsList : React.FC<JobsListProps> = ({jobs}) => {
             <hr/>
 
             {jobs && jobs.length > 0
-                ? jobs.map(job => <JobItem key={job.id} id={job.id} categoryId={job.categoryId} name={job.name} categoryName={job.categoryName} dueDate={job.dueDate} isCompleted={job.isCompleted} dateDifferenceInMinutes={job.dateDifferenceInMinutes}/>)
+                ? jobs.map(job => <JobItem key={job.id}
+                                           id={job.id}
+                                           categoryId={job.categoryId}
+                                           name={job.name}
+                                           categoryName={job.categoryName}
+                                           dueDate={job.dueDate}
+                                           isCompleted={job.isCompleted}
+                                           dateDifferenceInMinutes={job.dateDifferenceInMinutes}/>)
                 : <div className="jobs-list__item"><h3 className="list-item">There are no any jobs</h3></div>
             }
         </div>

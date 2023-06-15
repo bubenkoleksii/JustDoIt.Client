@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppDispatch} from "../hooks/redux";
-import {removeCategory} from "../store/reducers/categorySlice";
+// import {removeCategory} from "../store/reducers/category/categorySlice";
 
 interface CategoryItemProps {
     id: string;
@@ -12,7 +12,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({id, name, countOfJobs}) => {
     const dispatch = useAppDispatch();
 
     const handleRemove = (id: string) => {
-        dispatch(removeCategory(id));
+        // dispatch(removeCategory(id));
     }
 
     return (

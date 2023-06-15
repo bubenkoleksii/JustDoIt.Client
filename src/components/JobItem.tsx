@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppDispatch} from "../hooks/redux";
-import {updateJob, removeJob} from "../store/reducers/jobSlice";
+import {updateJob, removeJob} from "../store/reducers/job/jobSlice";
 
 interface JobItemProps {
     id: string;

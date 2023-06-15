@@ -3,7 +3,7 @@ import { Button, Modal} from 'react-bootstrap';
 import {useForm} from "react-hook-form";
 import {ICategoryRequest} from "../../models/ICategoryRequest";
 import {useAppDispatch} from "../../hooks/redux";
-import {addCategory} from "../../store/reducers/categorySlice";
+// import {addCategory} from "../../store/reducers/category/categorySlice";
 
 interface AddCategoryProps {
     show: boolean;
@@ -17,7 +17,7 @@ const AddCategory: React.FC<AddCategoryProps> = ({show, onHide}) => {
     });
 
     const onSubmit = (data: ICategoryRequest) => {
-        dispatch(addCategory(data));
+        // dispatch(addCategory(data));
 
         reset();
         onHide();

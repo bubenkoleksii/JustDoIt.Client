@@ -3,7 +3,7 @@ import {Button, Modal} from "react-bootstrap";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {useForm} from "react-hook-form";
 import {IJobRequest} from "../../models/IJobRequest";
-import {addJob} from "../../store/reducers/jobSlice";
+import {addJob} from "../../store/reducers/job/jobSlice";
 
 interface AddJobProps {
     show: boolean;
